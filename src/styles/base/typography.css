@@ -1,0 +1,23 @@
+@layer base {
+     html {
+          font-family: "Manrope Variable", sans-serif;
+          font-size: 14px;
+          line-height: 1.5714;
+     }
+
+     h1,
+     h2,
+     h3,
+     h4,
+     h5,
+     h6 {
+          font-family: "Space Grotesk Variable", sans-serif;
+     }
+
+     code,
+     kbd,
+     samp,
+     pre {
+          font-family: "JetBrains Mono Variable", monospace;
+     }
+}
