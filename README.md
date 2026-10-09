@@ -35,12 +35,10 @@ Clone the repository, change into the project directory, and install the
 JavaScript dependencies:
 
 ```sh
-git clone <repository-url>
+git clone https://github.com/beygiamin/Loomi
 cd Loomi
 npm ci
 ```
-
-Replace `<repository-url>` with the URL of your Loomi repository.
 
 ### Run the desktop app in development
 
