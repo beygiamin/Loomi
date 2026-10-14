@@ -48,6 +48,10 @@ jobs:
             npx tauri android init
           fi
 
+      - name: Inspect Android Gradle configuration
+        run: |
+          sed -n '1,240p' src-tauri/gen/android/app/build.gradle.kts11
+          
       - name: Build APK
         run: npx tauri android build --apk
 
