@@ -50,8 +50,8 @@ jobs:
 
       - name: Inspect Android Gradle configuration
         run: |
-          sed -n '1,240p' src-tauri/gen/android/app/build.gradle.kts11
-          
+          sed -n '1,240p' src-tauri/gen/android/app/build.gradle.kts
+
       - name: Build APK
         run: npx tauri android build --apk
 
