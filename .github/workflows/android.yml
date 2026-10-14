@@ -37,7 +37,7 @@ jobs:
           android sdk install platform-tools
           android sdk install platforms/android-35
           android sdk install build-tools/35.0.0
-          android sdk install ndk/27.2.12479018
+          android sdk install ndk/30.0.16248370
 
       - name: Install dependencies
         run: npm ci
