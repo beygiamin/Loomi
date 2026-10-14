@@ -44,8 +44,8 @@ jobs:
             npx tauri android init
           fi
 
-      - name: Build debug APK
-        run: npx tauri android build --debug --apk
+      - name: Build APK
+        run: npx tauri android build --apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
