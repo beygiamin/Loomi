@@ -54,7 +54,26 @@ jobs:
 
       - name: Build APK
         run: npx tauri android build --apk
+        
+      - name: Verify APK signatures
+        run: |
+          APK_DIR="src-tauri/gen/android/app/build/outputs/apk"
 
+          find "$APK_DIR" -name "*.apk" -print
+
+          APK=$(find "$APK_DIR" -name "*.apk" \
+            -path "*/release/*" \
+            | head -n 1)
+
+          if [ -z "$APK" ]; then
+            echo "No release APK found"
+            exit 1
+          fi
+
+          echo "Checking: $APK"
+
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" \
+            verify --verbose --print-certs "$APK"
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
