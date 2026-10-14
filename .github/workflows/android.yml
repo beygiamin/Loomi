@@ -58,22 +58,11 @@ jobs:
         run: |
           set -euo pipefail
 
-          test -n "$KEYSTORE_BASE64"
-          test -n "$KEY_ALIAS"
-          test -n "$KEY_PASSWORD"
-          test -n "$KEYSTORE_PASSWORD"
-
           ANDROID_DIR="src-tauri/gen/android"
           KEYSTORE_PATH="$RUNNER_TEMP/android-release.jks"
           GRADLE_FILE="$ANDROID_DIR/app/build.gradle.kts"
 
-          printf '%s' "$KEYSTORE_BASE64" \
-            | base64 --decode > "$KEYSTORE_PATH"
-
-          keytool -list \
-            -keystore "$KEYSTORE_PATH" \
-            -storepass "$KEYSTORE_PASSWORD" \
-            -alias "$KEY_ALIAS" >/dev/null
+          printf '%s' "$KEYSTORE_BASE64" | base64 --decode > "$KEYSTORE_PATH"
 
           {
             echo "keyAlias=$KEY_ALIAS"
@@ -82,46 +71,20 @@ jobs:
             echo "storeFile=$KEYSTORE_PATH"
           } > "$ANDROID_DIR/keystore.properties"
 
-          export GRADLE_FILE
-
           python3 <<'PY'
-          import os
           from pathlib import Path
 
-          path = Path(os.environ["GRADLE_FILE"])
+          path = Path("src-tauri/gen/android/app/build.gradle.kts")
           text = path.read_text()
 
-          if "signingConfigs {" not in text:
-              text = text.replace(
-                  "android {",
-                  """android {
-              signingConfigs {
-                  create("release") {
-                      val props = java.util.Properties()
-                      rootProject.file("keystore.properties")
-                          .inputStream().use { props.load(it) }
-                      keyAlias = props["keyAlias"] as String
-                      keyPassword = props["keyPassword"] as String
-                      storePassword = props["storePassword"] as String
-                      storeFile = file(props["storeFile"] as String)
-                  }
-              }
-          """,
-                  1,
-              )
+          imports = "import java.util.Properties\n\n"
+          if "import java.util.Properties" not in text:
+              text = imports + text
 
-          release_marker = 'getByName("release") {'
-          if release_marker in text:
-              if 'signingConfig = signingConfigs.getByName("release")' not in text:
-                  text = text.replace(
-                      release_marker,
-                      release_marker + '\n            signingConfig = signingConfigs.getByName("release")',
-                      1,
-                  )
-          else:
-              raise SystemExit(
-                  "Could not find the release build type in build.gradle.kts"
-              )
+          text = text.replace(
+              "val props = java.util.Properties()",
+              "val props = Properties()",
+          )
 
           path.write_text(text)
           PY
