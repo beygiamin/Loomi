@@ -1,4 +1,4 @@
-import { MovieGrid } from "@/components/MovieGrid";
+import { MovieGrid } from "@/features/movies/components/MovieGrid";
 
 export default function Home() {
      return (
