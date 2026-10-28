@@ -27,4 +27,4 @@ dist-ssr
 .agents/*
 
 #designs ideas and template
-stitch_local_movie_catalog_manager
+*.drawio
