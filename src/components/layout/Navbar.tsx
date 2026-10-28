@@ -1,10 +1,13 @@
 import { ThemeSwitcher } from "@/components/ui/theme-switcher/ThemeSwitcher";
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
 export function Navbar() {
+     const { t } = useTranslation();
+
      return (
           <nav
-               aria-label="Main"
+               aria-label={t("navigation.ariaLabel")}
                className="flex flex-wrap items-center justify-center gap-2 text-xs sm:gap-4 sm:text-sm"
           >
                <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
@@ -19,7 +22,7 @@ export function Navbar() {
                          end
                          to="/"
                     >
-                         Home
+                         {t("navigation.home")}
                     </NavLink>
                     <NavLink
                          className={({ isActive }) =>
@@ -31,7 +34,7 @@ export function Navbar() {
                          }
                          to="/movies"
                     >
-                         Movies
+                         {t("navigation.movies")}
                     </NavLink>
                     <NavLink
                          className={({ isActive }) =>
@@ -43,7 +46,7 @@ export function Navbar() {
                          }
                          to="/search"
                     >
-                         Search
+                         {t("navigation.search")}
                     </NavLink>
                     <NavLink
                          className={({ isActive }) =>
@@ -55,7 +58,7 @@ export function Navbar() {
                          }
                          to="/watchlist"
                     >
-                         Watchlist
+                         {t("navigation.watchlist")}
                     </NavLink>
                     <NavLink
                          className={({ isActive }) =>
@@ -67,7 +70,7 @@ export function Navbar() {
                          }
                          to="/settings"
                     >
-                         Settings
+                         {t("navigation.settings")}
                     </NavLink>
                </div>
                <ThemeSwitcher />

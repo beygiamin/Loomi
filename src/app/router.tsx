@@ -4,22 +4,26 @@ import {
      useRouteError,
 } from "react-router-dom";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { AppShell } from "@/components/layout/AppShell";
 
 function RouteLoadingFallback() {
+     const { t } = useTranslation();
+
      return (
           <div
                aria-live="polite"
                className="flex min-h-48 items-center justify-center text-sm text-muted-foreground"
                role="status"
           >
-               Loading page...
+               {t("common.loadingPage")}
           </div>
      );
 }
 
 function RouteErrorFallback() {
      const error = useRouteError();
+     const { t } = useTranslation();
 
      useEffect(() => {
           console.error("Application route error:", error);
@@ -27,13 +31,15 @@ function RouteErrorFallback() {
 
      return (
           <main className="flex min-h-svh flex-col items-center justify-center gap-4 bg-background p-6 text-foreground">
-               <h1 className="text-lg font-semibold">Something went wrong.</h1>
+               <h1 className="text-lg font-semibold">
+                    {t("common.somethingWentWrong")}
+               </h1>
                <button
                     className="rounded-md border border-input bg-background px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
                     onClick={() => window.location.reload()}
                     type="button"
                >
-                    Try again
+                    {t("common.tryAgain")}
                </button>
           </main>
      );

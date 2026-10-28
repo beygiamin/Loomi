@@ -1,0 +1,63 @@
+{
+     "app": {
+          "name": "Loomi"
+     },
+     "navigation": {
+          "ariaLabel": "پیمایش اصلی",
+          "home": "خانه",
+          "movies": "فیلم‌ها",
+          "search": "جستجو",
+          "watchlist": "فهرست تماشا",
+          "settings": "تنظیمات"
+     },
+     "common": {
+          "loadingPage": "در حال بارگذاری صفحه...",
+          "somethingWentWrong": "مشکلی پیش آمد.",
+          "tryAgain": "تلاش دوباره",
+          "footer": "پاورقی",
+          "toggleTheme": "تغییر پوسته",
+          "light": "روشن",
+          "dark": "تیره",
+          "system": "سیستم"
+     },
+     "pages": {
+          "home": {
+               "title": "خانه"
+          },
+          "movies": {
+               "title": "فیلم‌ها"
+          },
+          "movieDetails": {
+               "title": "جزئیات فیلم",
+               "id": "شناسه فیلم:"
+          },
+          "search": {
+               "title": "جستجو"
+          },
+          "watchlist": {
+               "title": "فهرست تماشا"
+          },
+          "notFound": {
+               "title": "صفحه پیدا نشد",
+               "goBackHome": "بازگشت به صفحه اصلی"
+          }
+     },
+     "settings": {
+          "title": "تنظیمات",
+          "language": {
+               "label": "زبان",
+               "english": "انگلیسی",
+               "persian": "فارسی",
+               "changeError": "ذخیره زبان انتخاب‌شده ممکن نشد."
+          },
+          "mediaFolder": {
+               "label": "پوشه رسانه",
+               "empty": "هیچ پوشه‌ای انتخاب نشده",
+               "select": "انتخاب پوشه",
+               "error": "باز کردن پنجره انتخاب پوشه ممکن نشد. لطفاً دوباره تلاش کنید."
+          }
+     },
+     "movieGrid": {
+          "emptyLabel": "شبکه فیلم خالی"
+     }
+}

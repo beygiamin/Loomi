@@ -1,0 +1,63 @@
+{
+     "app": {
+          "name": "Loomi"
+     },
+     "navigation": {
+          "ariaLabel": "Main navigation",
+          "home": "Home",
+          "movies": "Movies",
+          "search": "Search",
+          "watchlist": "Watchlist",
+          "settings": "Settings"
+     },
+     "common": {
+          "loadingPage": "Loading page...",
+          "somethingWentWrong": "Something went wrong.",
+          "tryAgain": "Try again",
+          "footer": "Footer",
+          "toggleTheme": "Toggle theme",
+          "light": "Light",
+          "dark": "Dark",
+          "system": "System"
+     },
+     "pages": {
+          "home": {
+               "title": "Home"
+          },
+          "movies": {
+               "title": "Movies"
+          },
+          "movieDetails": {
+               "title": "Movie details",
+               "id": "Movie ID:"
+          },
+          "search": {
+               "title": "Search"
+          },
+          "watchlist": {
+               "title": "Watchlist"
+          },
+          "notFound": {
+               "title": "Page not found",
+               "goBackHome": "Go back home"
+          }
+     },
+     "settings": {
+          "title": "Settings",
+          "language": {
+               "label": "Language",
+               "english": "English",
+               "persian": "Persian",
+               "changeError": "Unable to save the language preference."
+          },
+          "mediaFolder": {
+               "label": "Media folder",
+               "empty": "No folder selected",
+               "select": "Select folder",
+               "error": "Unable to open the folder picker. Please try again."
+          }
+     },
+     "movieGrid": {
+          "emptyLabel": "Empty movie grid"
+     }
+}

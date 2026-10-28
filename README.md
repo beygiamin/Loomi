@@ -78,6 +78,14 @@ npm test
 - `src-tauri/` — Tauri configuration and Rust desktop application
 - `public/` — Static frontend assets
 
+## Language support
+
+The interface supports English (the default) and Persian through `i18next`.
+Change languages from Settings; the selection is saved between launches.
+Persian mode sets the document language and switches the interface to
+right-to-left layout. Translation resources are in
+`src/i18n/locales/<language>/translation.json`.
+
 ## Movie metadata and artwork
 
 Loomi is intended to use open APIs to look up movie details, posters, and
