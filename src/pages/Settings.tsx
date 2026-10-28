@@ -4,6 +4,13 @@ import { FolderOpen } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button/Button";
 import { Input } from "@/components/ui/Input";
+import {
+     Select,
+     SelectContent,
+     SelectItem,
+     SelectTrigger,
+     SelectValue,
+} from "@/components/ui/Select";
 import { changeAppLanguage, type Locale } from "@/i18n";
 
 export default function Settings() {
@@ -12,6 +19,10 @@ export default function Settings() {
      const [error, setError] = useState<string | null>(null);
      const [languageError, setLanguageError] = useState<string | null>(null);
      const locale: Locale = i18n.resolvedLanguage === "fa" ? "fa" : "en";
+     const languages = [
+          { value: "en", label: t("settings.language.english") },
+          { value: "fa", label: t("settings.language.persian") },
+     ] satisfies { value: Locale; label: string }[];
 
      async function selectFolder() {
           setError(null);
@@ -44,9 +55,7 @@ export default function Settings() {
 
      return (
           <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-               <h1 className="text-xl font-semibold">
-                    {t("settings.title")}
-               </h1>
+               <h1 className="text-xl font-semibold">{t("settings.title")}</h1>
                <div className="mt-8 max-w-2xl">
                     <div className="mb-8">
                          <label
@@ -55,28 +64,43 @@ export default function Settings() {
                          >
                               {t("settings.language.label")}
                          </label>
-                         <select
-                              className="mt-2 flex h-8 w-full max-w-xs rounded-lg border border-input bg-background px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
-                              id="language"
-                              onChange={event => {
-                                   const selected = event.currentTarget.value;
-                                   if (selected === "en" || selected === "fa") {
-                                        void selectLanguage(selected);
+                         <Select
+                              items={languages}
+                              onValueChange={value => {
+                                   if (value === "en" || value === "fa") {
+                                        void selectLanguage(value);
                                    }
                               }}
                               value={locale}
                          >
-                              <option value="en">
-                                   {t("settings.language.english")}
-                              </option>
-                              <option value="fa">
-                                   {t("settings.language.persian")}
-                              </option>
-                         </select>
+                              <SelectTrigger
+                                   aria-describedby={
+                                        languageError
+                                             ? "language-error"
+                                             : undefined
+                                   }
+                                   aria-invalid={Boolean(languageError)}
+                                   className="mt-2 w-full max-w-xs"
+                                   id="language"
+                              >
+                                   <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent align="start">
+                                   {languages.map(language => (
+                                        <SelectItem
+                                             key={language.value}
+                                             value={language.value}
+                                        >
+                                             {language.label}
+                                        </SelectItem>
+                                   ))}
+                              </SelectContent>
+                         </Select>
                          {languageError && (
                               <p
                                    aria-live="polite"
                                    className="mt-2 text-sm text-destructive"
+                                   id="language-error"
                                    role="alert"
                               >
                                    {languageError}

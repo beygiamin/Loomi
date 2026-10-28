@@ -1,10 +1,10 @@
 import {
      cleanup,
-     fireEvent,
      render,
      screen,
      waitFor,
 } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { createInstance, type Resource } from "i18next";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import Settings from "@/pages/Settings";
@@ -36,15 +36,17 @@ describe("i18n configuration", () => {
      });
 
      it("updates translations and document direction and persists language changes", async () => {
+          const user = userEvent.setup();
           render(<Settings />);
 
           expect(
                screen.getByRole("heading", { name: "Settings" }),
           ).toBeTruthy();
 
-          fireEvent.change(screen.getByRole("combobox", { name: "Language" }), {
-               target: { value: "fa" },
-          });
+          await user.click(screen.getByRole("combobox", { name: "Language" }));
+          await user.click(
+               await screen.findByRole("option", { name: "Persian" }),
+          );
 
           await waitFor(() => {
                expect(
@@ -59,9 +61,10 @@ describe("i18n configuration", () => {
                resolveInitialLocale(localStorage.getItem(LOCALE_STORAGE_KEY)),
           ).toBe("fa");
 
-          fireEvent.change(screen.getByRole("combobox", { name: "زبان" }), {
-               target: { value: "en" },
-          });
+          await user.click(screen.getByRole("combobox", { name: "زبان" }));
+          await user.click(
+               await screen.findByRole("option", { name: "انگلیسی" }),
+          );
 
           await waitFor(() => {
                expect(
