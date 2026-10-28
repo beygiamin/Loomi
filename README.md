@@ -74,7 +74,10 @@ npm test
 
 ## Project layout
 
-- `src/` — React application, pages, components, and styles
+- `src/app/` — application setup, routing, and providers
+- `src/features/` — feature-owned pages and components
+- `src/components/` — shared layout and UI components
+- `src/` — shared configuration, hooks, localization, and styles
 - `src-tauri/` — Tauri configuration and Rust desktop application
 - `public/` — Static frontend assets
 

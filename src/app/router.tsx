@@ -56,7 +56,7 @@ const router = createHashRouter([
                     errorElement: <RouteErrorFallback />,
                     lazy: async () => {
                          const { default: Component } = await import(
-                              "@/pages/Home"
+                              "@/features/home/pages/Home"
                          );
                          return { Component };
                     },
@@ -66,7 +66,7 @@ const router = createHashRouter([
                     errorElement: <RouteErrorFallback />,
                     lazy: async () => {
                          const { default: Component } = await import(
-                              "@/pages/Movies"
+                              "@/features/movies/pages/Movies"
                          );
                          return { Component };
                     },
@@ -76,7 +76,7 @@ const router = createHashRouter([
                     errorElement: <RouteErrorFallback />,
                     lazy: async () => {
                          const { default: Component } = await import(
-                              "@/pages/MovieDetails"
+                              "@/features/movies/pages/MovieDetails"
                          );
                          return { Component };
                     },
@@ -86,7 +86,7 @@ const router = createHashRouter([
                     errorElement: <RouteErrorFallback />,
                     lazy: async () => {
                          const { default: Component } = await import(
-                              "@/pages/Search"
+                              "@/features/search/pages/Search"
                          );
                          return { Component };
                     },
@@ -96,7 +96,7 @@ const router = createHashRouter([
                     errorElement: <RouteErrorFallback />,
                     lazy: async () => {
                          const { default: Component } = await import(
-                              "@/pages/Watchlist"
+                              "@/features/watchlist/pages/Watchlist"
                          );
                          return { Component };
                     },
@@ -106,7 +106,7 @@ const router = createHashRouter([
                     errorElement: <RouteErrorFallback />,
                     lazy: async () => {
                          const { default: Component } = await import(
-                              "@/pages/Settings"
+                              "@/features/settings/pages/Settings"
                          );
                          return { Component };
                     },
@@ -116,7 +116,7 @@ const router = createHashRouter([
                     errorElement: <RouteErrorFallback />,
                     lazy: async () => {
                          const { default: Component } = await import(
-                              "@/pages/NotFound"
+                              "@/features/not-found/pages/NotFound"
                          );
                          return { Component };
                     },

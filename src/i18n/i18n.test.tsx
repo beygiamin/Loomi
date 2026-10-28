@@ -7,7 +7,7 @@ import {
 import userEvent from "@testing-library/user-event";
 import { createInstance, type Resource } from "i18next";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import Settings from "@/pages/Settings";
+import Settings from "@/features/settings/pages/Settings";
 import {
      changeAppLanguage,
      DEFAULT_LOCALE,

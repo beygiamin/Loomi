@@ -7,12 +7,12 @@ import {
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { ThemeContext } from "@/app/providers/theme-context";
 import { Navbar } from "@/components/layout/Navbar";
-import Home from "@/pages/Home";
-import MovieDetails from "@/pages/MovieDetails";
-import Movies from "@/pages/Movies";
-import NotFound from "@/pages/NotFound";
-import Search from "@/pages/Search";
-import Watchlist from "@/pages/Watchlist";
+import Home from "@/features/home/pages/Home";
+import MovieDetails from "@/features/movies/pages/MovieDetails";
+import Movies from "@/features/movies/pages/Movies";
+import NotFound from "@/features/not-found/pages/NotFound";
+import Search from "@/features/search/pages/Search";
+import Watchlist from "@/features/watchlist/pages/Watchlist";
 import { changeAppLanguage, DEFAULT_LOCALE } from "./index";
 
 const localizedPages = [
